@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"],
+      "@/*": ["./src/*"],
+      "/#/*": ["./types/*"],
+      "@vab/*": ["./library/*"],
+      "@gp": ["./library/plugins/vab"]
+    }
+    "target": "ES2015"
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ]
+}
