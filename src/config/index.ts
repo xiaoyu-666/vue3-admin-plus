@@ -1,5 +1,11 @@
-import { cliConfig } from './cli.config'
+import cli from './cli.config'
+import setting from './setting.config'
+import theme from './theme.config'
+import network from './net.config'
 
 export default {
-  ...cliConfig,
+  ...cli,
+  ...setting,
+  ...theme,
+  ...network,
 }
