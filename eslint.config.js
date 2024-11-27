@@ -5,7 +5,7 @@ import oxlint from 'eslint-plugin-oxlint'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
 export default [
-  { ignores: ['node_modules', 'dist', '.history'] },
+  { ignores: ['node_modules', 'dist', '.history', '.husky'] },
   {
     name: 'app/files-to-lint',
     files: ['**/*.{ts,mts,tsx,vue}'],
@@ -23,6 +23,11 @@ export default [
     },
   },
   ...vueTsEslintConfig(),
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 
   {
     ...pluginVitest.configs.recommended,
