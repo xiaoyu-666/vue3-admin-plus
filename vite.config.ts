@@ -25,6 +25,9 @@ export default defineConfig({
     alias: {
       '~': fileURLToPath(new URL('.', import.meta.url)),
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@vab': fileURLToPath(new URL('./library', import.meta.url)),
+      '/#': fileURLToPath(new URL('./types', import.meta.url)),
+      //'@vab': resolve(__dirname, 'library'),
       // '@': resolve(__dirname, './src'),
     },
   },
@@ -34,6 +37,15 @@ export default defineConfig({
     vueDevTools(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      imports: [
+        'vue',
+        'vue-router',
+        'pinia',
+        '@vueuse/core',
+        {
+          axios: [['default', 'axios']],
+        },
+      ],
       dts: 'library/build/vuePlugins/auto-imports.d.ts',
     }),
     Components({
