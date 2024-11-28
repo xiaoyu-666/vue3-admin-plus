@@ -1,14 +1,12 @@
-import './assets/main.css'
-
+import { setupVab } from '~/library'
+import { setupStore } from '@/stores'
+import { setupRouter } from '@/router'
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
 import App from './App.vue'
-import router from './router'
 
 const app = createApp(App)
-
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
+setupVab(app)
+setupStore(app)
+setupRouter(app)
+  .isReady()
+  .then(() => app.mount('#app'))

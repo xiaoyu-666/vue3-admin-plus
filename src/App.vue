@@ -15,7 +15,7 @@
 
     <div class="wrapper">
       <hello-world msg="You did it!" />
-
+      <div class="textScss">scss测试代码</div>
       <nav>
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
@@ -25,6 +25,12 @@
 
   <router-view />
 </template>
+
+<style lang="scss">
+  .textScss {
+    color: $test-color-green;
+  }
+</style>
 
 <style scoped>
   header {
