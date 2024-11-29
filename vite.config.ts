@@ -50,6 +50,7 @@ export default defineConfig({
     }),
     Components({
       resolvers: [ElementPlusResolver()],
+      dirs: ['library/components'],
       dts: 'library/build/vuePlugins/components.d.ts',
     }),
     {

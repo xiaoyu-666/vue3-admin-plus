@@ -11,7 +11,8 @@ export default {
   devPort: 15022,
   //启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
   reportCompressedSize: true,
-
+  // 禁止在生产环境下使用调试
+  noDebugger: true,
   // ----------------以下配置未使用---------------------------------------------------------
   // 开发环境每次保存时是否输出为eslint编译警告
   lintOnSave: true,
@@ -29,6 +30,4 @@ export default {
   pwa: true,
   // 打包优化，如需实现服务器快速部署请配置false，如需提升网页加载速度请配置true
   buildOptimize: false,
-  // 禁止在生产环境下使用调试
-  noDebugger: true,
 }
