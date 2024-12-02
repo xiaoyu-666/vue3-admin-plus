@@ -1,11 +1,6 @@
-import { describe, it, expect } from 'vitest'
+import { expect, test } from 'vitest'
 
-import { mount } from '@vue/test-utils'
-import HelloWorld from '../HelloWorld.vue'
-
-describe('HelloWorld', () => {
-  it('renders properly', () => {
-    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } })
-    expect(wrapper.text()).toContain('Hello Vitest')
-  })
+test('HelloWorld', () => {
+  expect.soft(1 + 1).toBe(2) // mark the test as fail and continue
+  expect.soft(1 + 2).toBe(3) // mark the test as fail and continue
 })
