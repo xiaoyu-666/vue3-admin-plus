@@ -18,6 +18,15 @@
       "/#/*": ["./types/*"],
       "@vab/*": ["./library/*"]
     },
-    "types": ["node"]
+    "types": ["node"],
+    /* Bundler mode */
+    "isolatedModules": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "allowJs": true
   }
 }

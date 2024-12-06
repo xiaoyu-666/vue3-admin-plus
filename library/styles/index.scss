@@ -1,2 +1,5 @@
-$test-color-red: red;
-$test-color-green: green;
+@use './normalize.scss';
+
+body {
+  margin: 0 !important;
+}

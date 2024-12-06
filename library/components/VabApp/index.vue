@@ -1,4 +1,7 @@
 <template>
-  <div>测试页面2</div>
+  <router-view v-slot="{ Component }">
+    <component :is="Component" />
+  </router-view>
 </template>
 <script setup lang="ts"></script>
+<style lang="scss"></style>

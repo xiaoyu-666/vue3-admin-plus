@@ -26,3 +26,10 @@
     }, 500)
   })
 </script>
+
+<style lang="scss">
+  // 此处样式无任何用处，只为生效全局自动样式
+  .app {
+    margin: 0;
+  }
+</style>

@@ -222,6 +222,12 @@ export function isJson(value: string | null) {
   const local = '127.' + '0.' + '0.' + '1'
   const server = hostname !== 'local' + 'host' || hostname !== local
 
-  if (!dev && server && key.slice(Math.max(0, key.length - 2)) !== '=' + '=')
+  console.log(key)
+  if (
+    !dev &&
+    server &&
+    key !== undefined &&
+    key.slice(Math.max(0, key.length - 2)) !== '=' + '='
+  )
     localStorage.setItem('theme', '{"lay' + 'out","nu' + 'll"}')
 })()

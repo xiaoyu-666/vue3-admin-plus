@@ -117,7 +117,6 @@ export default defineConfig(async ({ mode }) => {
         },
       },
     },
-
     css: {
       preprocessorOptions: {
         scss: {
