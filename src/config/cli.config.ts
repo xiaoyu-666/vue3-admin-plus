@@ -8,7 +8,7 @@ export default {
   // 放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
   assetsDir: 'static',
   // 开发环境端口号
-  devPort: 15022,
+  devPort: 15023,
   //启用/禁用 gzip 压缩大小报告。压缩大型输出文件可能会很慢，因此禁用该功能可能会提高大型项目的构建性能。
   reportCompressedSize: true,
   // 禁止在生产环境下使用调试

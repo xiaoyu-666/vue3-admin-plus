@@ -52,6 +52,7 @@ export default defineConfig(async ({ mode }) => {
           'vue-router',
           'pinia',
           '@vueuse/core',
+          'vue-i18n',
           {
             axios: [['default', 'axios']],
           },
@@ -88,7 +89,7 @@ export default defineConfig(async ({ mode }) => {
       open: true,
     },
     build: {
-      target: 'es2015',
+      target: 'esnext',
       outDir,
       assetsDir,
       reportCompressedSize,
@@ -120,7 +121,8 @@ export default defineConfig(async ({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "~/library/styles/index.scss" as *;`,
+          additionalData: `@use "~/library/styles/variables/variables.module.scss" as *;
+          @use "~/library/styles/index.scss" as *;`,
           api: 'modern-compiler',
         },
       },

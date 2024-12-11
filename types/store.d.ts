@@ -39,12 +39,6 @@ declare interface SettingsModuleType {
   logo: string
   title: string
   abbreviation: string
-  echartsGraphic1: string[]
-  echartsGraphic2: string[]
-  echartsGraphic3: string[]
-  echartsGraphic4: string[]
-  echartsGraphic5: string[]
-  echartsGraphic6: string[]
 }
 
 declare interface TabsModuleType {

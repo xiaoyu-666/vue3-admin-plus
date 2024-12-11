@@ -9,7 +9,32 @@ import {
   isLowerCase,
   isUpperCase,
   isAlphabets,
+  isString,
+  isArray,
+  isPort,
 } from '../validate'
+
+test('isPort', () => {
+  expect(isPort('80')).toBe(true)
+  expect(isPort('s40')).toBe(false)
+})
+
+test('isArray', () => {
+  expect(isArray('SS')).toBe(false)
+  expect(isArray(' ')).toBe(false)
+  expect(isArray([])).toBe(true)
+  expect(isArray(['', 2, '34'])).toBe(true)
+})
+
+test('isString', () => {
+  expect(isString('sss')).toBe(true)
+  expect(isString('sDD')).toBe(true)
+  expect(isString('s d')).toBe(true)
+  expect(isString('Ss')).toBe(true)
+  expect(isString('SS')).toBe(true)
+  expect(isString(1234)).toBe(false)
+  expect(isString(' ')).toBe(true)
+})
 
 test('isAlphabets', () => {
   expect(isAlphabets('sss')).toBe(true)

@@ -212,22 +212,21 @@ export function isJson(value: string | null) {
   return false
 }
 
-/**
- * isSever最终校验
- */
-;(() => {
-  const dev = process['env']['NODE_' + 'ENV'] === 'dev' + 'elop' + 'ment'
-  const key: any = process['env']['VUE_' + 'APP_' + 'SEC' + 'RET_' + 'KEY']
-  const hostname = window.location.hostname
-  const local = '127.' + '0.' + '0.' + '1'
-  const server = hostname !== 'local' + 'host' || hostname !== local
+// /**
+//  * isSever最终校验
+//  */
+// ;(() => {
+//   const dev = process['env']['NODE_' + 'ENV'] === 'dev' + 'elop' + 'ment'
+//   const key: any = process['env']['VUE_' + 'APP_' + 'SEC' + 'RET_' + 'KEY']
+//   const hostname = window.location.hostname
+//   const local = '127.' + '0.' + '0.' + '1'
+//   const server = hostname !== 'local' + 'host' || hostname !== local
 
-  console.log(key)
-  if (
-    !dev &&
-    server &&
-    key !== undefined &&
-    key.slice(Math.max(0, key.length - 2)) !== '=' + '='
-  )
-    localStorage.setItem('theme', '{"lay' + 'out","nu' + 'll"}')
-})()
+//   if (
+//     !dev &&
+//     server &&
+//     key !== undefined &&
+//     key.slice(Math.max(0, key.length - 2)) !== '=' + '='
+//   )
+//     localStorage.setItem('theme', '{"lay' + 'out","nu' + 'll"}')
+// })()
