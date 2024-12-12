@@ -1,11 +1,12 @@
 /**
  * @description vue过渡动画
  */
+@use './variables/variables.module.scss' as v;
 
 .fade-transform {
   &-leave-active,
   &-enter-active {
-    transition: $base-transition;
+    transition: v.$base-transition;
   }
 
   &-enter,

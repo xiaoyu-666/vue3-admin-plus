@@ -121,8 +121,7 @@ export default defineConfig(async ({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@use "~/library/styles/variables/variables.module.scss" as *;
-          @use "~/library/styles/index.scss" as *;`,
+          additionalData: `@use "~/library/styles/variables/variables.module.scss" as *;`,
           api: 'modern-compiler',
         },
       },

@@ -8,6 +8,7 @@
       :show-tabs="theme.showTabs"
     />
     <el-backtop target="#app" />
+    <div class="fade-transform-enter-active">234</div>
   </div>
 </template>
 <script lang="ts">
