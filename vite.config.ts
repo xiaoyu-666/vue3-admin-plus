@@ -89,7 +89,7 @@ export default defineConfig(async ({ mode }) => {
       open: true,
     },
     build: {
-      target: 'esnext',
+      target: 'es2015',
       outDir,
       assetsDir,
       reportCompressedSize,

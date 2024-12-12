@@ -12,17 +12,24 @@
 </template>
 <script lang="ts">
   import { useSettingsStore } from '@/stores/modules/settings'
-  import { get } from 'http'
 
-  const Components: any = {}
-  const imports = import.meta.glob(`./**/*.vue`, {
-    eager: false,
+  const imports: any = import.meta.glob(`./**/*.vue`, {
+    eager: true,
   })
 
-  for (const key in imports) {
-    const _import: any = await imports[key]()
-    Components[key.replace(/(\/|\.|index.vue)/g, '')] = _import.default
-  }
+  const Components = Object.keys(imports).reduce((val: any, path) => {
+    if (path === './index.vue') {
+      return val
+    }
+    // // 获取组件配置
+    const component = imports[path].default || imports[path]
+    // // 获取组件的 PascalCase 命名
+    const componentName = path.replace(/(\/|\.|index.vue)/g, '')
+    // // 将组件添加到对象中
+    val[componentName] = component
+
+    return val
+  }, {})
 
   export default defineComponent({
     name: 'Layouts',
@@ -82,7 +89,7 @@
     height: 100%;
 
     [class*='vab-layout-'] {
-      :deep() {
+      :deep(*) {
         .vab-layout-header {
           box-shadow: $base-box-shadow;
         }
@@ -97,7 +104,7 @@
       }
     }
 
-    :deep() {
+    :deep(*) {
       .fixed-header {
         position: fixed;
         top: 0;
@@ -130,7 +137,7 @@
 
     /* 手机端开始 */
     &.mobile {
-      :deep() {
+      :deep(*) {
         .vab-layout-vertical {
           .el-scrollbar.vab-side-bar.is-collapse {
             width: 0;
