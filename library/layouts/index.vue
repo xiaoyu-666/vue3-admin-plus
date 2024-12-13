@@ -23,7 +23,6 @@
     }
     // // 获取组件配置
     const component = imports[path].default || imports[path]
-    console.log(component)
     // // 获取组件的 PascalCase 命名
     const componentName = path.replace(/(\/|\.|index.vue)/g, '')
     // // 将组件添加到对象中

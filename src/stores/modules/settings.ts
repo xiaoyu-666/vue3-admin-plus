@@ -111,9 +111,9 @@ export const useSettingsStore = defineStore('settings', {
     },
     updateTheme() {
       //主题更新样式
-      // const index = this.theme.themeName.indexOf('-')
-      // const themeName =
-      //   this.theme.themeName.slice(0, Math.max(0, index)) || 'blue'
+      const index = this.theme.themeName.indexOf('-')
+      const themeName =
+        this.theme.themeName.slice(0, Math.max(0, index)) || 'blue'
       // let variables = require(
       //   `@vab/styles/variables/vab-${themeName}-variables.module.scss`
       // )
@@ -124,18 +124,18 @@ export const useSettingsStore = defineStore('settings', {
       //       variables[key]
       //   }
       // })
-      // const menuBackground =
-      //   this.theme.themeName.split('-')[1] || this.theme.themeName
-      // document.querySelectorAll('body')[0].className =
-      //   `vab-theme-${menuBackground}`
-      // if (this.theme.background !== 'none')
-      //   document
-      //     .querySelectorAll('body')[0]
-      //     .classList.add(this.theme.background)
-      // const el = ref(null)
-      // if (this.theme.menuWidth && this.theme.menuWidth.endsWith('px'))
-      //   useCssVar('--el-left-menu-width', el).value = this.theme.menuWidth
-      // else useCssVar('--el-left-menu-width', el).value = '266px'
+      const menuBackground =
+        this.theme.themeName.split('-')[1] || this.theme.themeName
+      document.querySelectorAll('body')[0].className =
+        `vab-theme-${menuBackground}`
+      if (this.theme.background !== 'none')
+        document
+          .querySelectorAll('body')[0]
+          .classList.add(this.theme.background)
+      const el = ref(null)
+      if (this.theme.menuWidth && this.theme.menuWidth.endsWith('px'))
+        useCssVar('--el-left-menu-width', el).value = this.theme.menuWidth
+      else useCssVar('--el-left-menu-width', el).value = '266px'
     },
     toggleCollapse() {
       this.collapse = !this.collapse

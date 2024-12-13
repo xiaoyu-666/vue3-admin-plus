@@ -10,9 +10,11 @@ declare module 'vue' {
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VabApp: typeof import('./../../components/VabApp/index.vue')['default']
     VabAppMain: typeof import('./../../components/VabAppMain/index.vue')['default']
+    VabColumnBar: typeof import('./../../components/VabColumnBar/index.vue')['default']
   }
 }

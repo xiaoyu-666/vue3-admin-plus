@@ -1,27 +1,72 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
+import type { RouteRecordName, RouteRecordRaw } from 'vue-router'
+import type { VabRouteRecord } from '/#/router'
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+} from 'vue-router'
 import Layout from '@vab/layouts/index.vue'
+import customConfig from '@/config'
+const { isHashRouterMode } = customConfig
+
+export const constantRoutes: VabRouteRecord[] = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/index.vue'),
+    meta: {
+      hidden: true,
+    },
+  },
+]
+
+export const asyncRoutes: VabRouteRecord[] = [
+  {
+    path: '/',
+    name: 'Root',
+    component: Layout,
+    meta: {
+      title: '首页',
+      icon: 'home-2-line',
+      breadcrumbHidden: true,
+    },
+  },
+]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Layout,
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
-  ],
+  history: isHashRouterMode
+    ? createWebHashHistory(import.meta.env.BASE_URL)
+    : createWebHistory(import.meta.env.BASE_URL),
+  routes: constantRoutes as RouteRecordRaw[],
 })
 
+function fatteningRoutes(routes: VabRouteRecord[]): VabRouteRecord[] {
+  return routes.flatMap((route: VabRouteRecord) => {
+    return route.children ? fatteningRoutes(route.children) : route
+  })
+}
+
+function addRouter(routes: VabRouteRecord[]) {
+  routes.forEach((route: VabRouteRecord) => {
+    if (!router.hasRoute(route.name)) router.addRoute(route as RouteRecordRaw)
+    if (route.children) addRouter(route.children)
+  })
+}
+
+export function resetRouter(routes: VabRouteRecord[] = constantRoutes) {
+  routes.map((route: VabRouteRecord) => {
+    if (route.children) route.children = fatteningRoutes(route.children)
+  })
+  router.getRoutes().forEach(({ name }) => {
+    if (router.hasRoute((<RouteRecordName>name) as any)) {
+      router.removeRoute((<RouteRecordName>name) as any)
+    }
+  })
+  addRouter(routes)
+}
 export function setupRouter(app: any) {
+  //路由动态加载
+  addRouter(asyncRoutes)
   app.use(router)
   return router
 }

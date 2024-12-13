@@ -6,7 +6,7 @@
       'no-tabs-bar': !showTabs,
     }"
   >
-    <!-- <vab-column-bar /> -->
+    <vab-column-bar />
     <div
       class="vab-main"
       :class="{
@@ -23,7 +23,8 @@
         <!-- <vab-nav /> -->
         <!-- <vab-tabs v-show="showTabs" /> -->
       </div>
-      <vab-app-main />
+      <!-- <vab-app-main /> -->
+      <div>普通布局</div>
     </div>
   </div>
 </template>
