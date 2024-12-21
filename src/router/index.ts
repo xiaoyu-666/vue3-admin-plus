@@ -8,7 +8,7 @@ import {
 import Layout from '@vab/layouts/index.vue'
 import customConfig from '@/config'
 const { isHashRouterMode } = customConfig
-
+import { setupPermissions } from './permissions'
 export const constantRoutes: VabRouteRecord[] = [
   {
     path: '/login',
@@ -30,6 +30,18 @@ export const asyncRoutes: VabRouteRecord[] = [
       icon: 'home-2-line',
       breadcrumbHidden: true,
     },
+    children: [
+      {
+        path: 'index',
+        name: 'Index',
+        component: () => import('@/views/index/index.vue'),
+        meta: {
+          title: '首页',
+          icon: 'home-2-line',
+          noClosable: true,
+        },
+      },
+    ],
   },
 ]
 
@@ -67,6 +79,7 @@ export function resetRouter(routes: VabRouteRecord[] = constantRoutes) {
 export function setupRouter(app: any) {
   //路由动态加载
   addRouter(asyncRoutes)
+  setupPermissions(router)
   app.use(router)
   return router
 }

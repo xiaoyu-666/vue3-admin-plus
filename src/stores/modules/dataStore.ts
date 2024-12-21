@@ -1,7 +1,7 @@
 /**
  * @description 通用页面通用数据仓库
  */
-import { DataStoreModuleType } from '/#/store'
+import type { DataStoreModuleType } from '/#/store'
 export const dataStore = defineStore('data', {
   state: (): DataStoreModuleType => ({
     roleList: [],

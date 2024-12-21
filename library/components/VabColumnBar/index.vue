@@ -6,7 +6,32 @@
       ['vab-column-bar-container-' + theme.columnStyle]: true,
     }"
   >
-    df
+    <vab-logo />
+    <el-tabs v-model="tab.data" tab-position="left">
+      <template v-for="(item, index) in routes" :key="index + item.name">
+        <el-tab-pane :name="item.name">
+          <template #label>
+            <div
+              class="vab-column-grid"
+              :class="{
+                ['vab-column-grid-' + theme.columnStyle]: true,
+              }"
+            >
+              <div>
+                <!-- <vab-icon
+                  v-if="item.meta.icon"
+                  :icon="item.meta.icon"
+                  :is-custom-svg="item.meta.isCustomSvg"
+                /> -->
+                <span>
+                  {{ item.meta.title }}
+                </span>
+              </div>
+            </div>
+          </template>
+        </el-tab-pane>
+      </template>
+    </el-tabs>
   </el-scrollbar>
 </template>
 <script lang="ts">
@@ -15,11 +40,37 @@
   }
 </script>
 <script setup lang="ts">
+  import { useRoutesStore } from '@/stores/modules/routes'
   import { useSettingsStore } from '@/stores/modules/settings'
   const route = useRoute()
   const router = useRouter()
   const settingsStore = useSettingsStore()
   const { theme, collapse } = storeToRefs(settingsStore)
+  const { foldSideBar, openSideBar } = settingsStore
+  const routesStore = useRoutesStore()
+  const {
+    getTab: tab,
+    getTabMenu: tabMenu,
+    getActiveMenu: activeMenu,
+    getRoutes: routes,
+    getPartialRoutes: partialRoutes,
+  }: any = storeToRefs(routesStore)
+
+  console.log(tab)
+  console.log(routes)
+
+  watchEffect(() => {
+    const foldUnfold: any = document.querySelector(
+      '.fold-unfold'
+    ) as HTMLElement
+    if (theme.value.layout === 'column' && route.meta.noColumn) {
+      foldSideBar()
+      if (foldUnfold) foldUnfold.style = 'display:none'
+    } else {
+      openSideBar()
+      if (foldUnfold) foldUnfold.style = ''
+    }
+  })
 </script>
 <style lang="scss" scoped>
   @use 'sass:math';

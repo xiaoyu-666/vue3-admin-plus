@@ -114,16 +114,20 @@ export const useSettingsStore = defineStore('settings', {
       const index = this.theme.themeName.indexOf('-')
       const themeName =
         this.theme.themeName.slice(0, Math.max(0, index)) || 'blue'
-      // let variables = require(
-      //   `@vab/styles/variables/vab-${themeName}-variables.module.scss`
-      // )
-      // if (variables.default) variables = variables.default
-      // Object.keys(variables).forEach((key) => {
-      //   if (key.startsWith('vab-')) {
-      //     useCssVar(key.replace('vab-', '--el-'), ref(null)).value =
-      //       variables[key]
-      //   }
-      // })
+
+      import(
+        `@vab/styles/variables/vab-${themeName}-variables.module.scss`
+      ).then((v) => {
+        let variables: any = {}
+        if (v.default) variables = v.default
+        Object.keys(variables).forEach((key) => {
+          if (key.startsWith('vab-')) {
+            useCssVar(key.replace('vab-', '--el-'), ref(null)).value =
+              variables[key]
+          }
+        })
+      })
+
       const menuBackground =
         this.theme.themeName.split('-')[1] || this.theme.themeName
       document.querySelectorAll('body')[0].className =
