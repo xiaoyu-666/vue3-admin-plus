@@ -18,7 +18,7 @@
       "/#/*": ["./types/*"],
       "@vab/*": ["./library/*"]
     },
-    "types": ["node"],
+    "types": ["node", "vite-plugin-svg-icons/client"],
     /* Bundler mode */
     "isolatedModules": true,
     "noEmit": true,

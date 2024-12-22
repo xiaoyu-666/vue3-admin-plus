@@ -3,6 +3,8 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue' //引入图标
 import 'element-plus/dist/index.css' //引入样式
 import type { App } from 'vue'
 import '@vab/styles/index.scss'
+import 'remixicon/fonts/remixicon.css'
+import 'virtual:svg-icons-register'
 
 export function setupVab(app: App<Element>) {
   for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

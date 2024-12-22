@@ -18,11 +18,11 @@
               }"
             >
               <div>
-                <!-- <vab-icon
+                <vab-icon
                   v-if="item.meta.icon"
                   :icon="item.meta.icon"
                   :is-custom-svg="item.meta.isCustomSvg"
-                /> -->
+                />
                 <span>
                   {{ item.meta.title }}
                 </span>
@@ -55,9 +55,6 @@
     getRoutes: routes,
     getPartialRoutes: partialRoutes,
   }: any = storeToRefs(routesStore)
-
-  console.log(tab)
-  console.log(routes)
 
   watchEffect(() => {
     const foldUnfold: any = document.querySelector(

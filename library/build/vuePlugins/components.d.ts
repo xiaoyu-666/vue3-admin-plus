@@ -17,6 +17,7 @@ declare module 'vue' {
     VabApp: typeof import('./../../components/VabApp/index.vue')['default']
     VabAppMain: typeof import('./../../components/VabAppMain/index.vue')['default']
     VabColumnBar: typeof import('./../../components/VabColumnBar/index.vue')['default']
+    VabIcon: typeof import('./../../components/VabIcon/index.vue')['default']
     VabLogo: typeof import('./../../components/VabLogo/index.vue')['default']
   }
 }

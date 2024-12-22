@@ -14,8 +14,12 @@ import viteCompression from 'vite-plugin-compression'
 import { visualizer } from 'rollup-plugin-visualizer'
 //图片压缩插件
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+//导入svg插件
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+
 // 导入系统自定义配置
 import config from './src/config'
+import path from 'path'
 
 const { base, devPort, outDir, assetsDir, reportCompressedSize } = config
 
@@ -63,6 +67,16 @@ export default defineConfig(async ({ mode }) => {
         resolvers: [ElementPlusResolver()],
         dirs: ['library/components'],
         dts: 'library/build/vuePlugins/components.d.ts',
+      }),
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), 'src/icons')],
+        // 指定symbolId格式
+        symbolId: 'icon-[name]',
+        /**
+         * custom dom id
+         * @default: __svg__icons__dom__
+         */
+        customDomId: '__svg__icons__dom__',
       }),
       {
         ...viteCompression(),
