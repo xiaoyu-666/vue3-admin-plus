@@ -9,6 +9,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     ElBacktop: typeof import('element-plus/es')['ElBacktop']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
@@ -19,5 +21,6 @@ declare module 'vue' {
     VabColumnBar: typeof import('./../../components/VabColumnBar/index.vue')['default']
     VabIcon: typeof import('./../../components/VabIcon/index.vue')['default']
     VabLogo: typeof import('./../../components/VabLogo/index.vue')['default']
+    VabMenu: typeof import('./../../components/VabMenu/index.vue')['default']
   }
 }

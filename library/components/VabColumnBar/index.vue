@@ -7,7 +7,7 @@
     }"
   >
     <vab-logo />
-    <el-tabs v-model="tab.data" tab-position="left">
+    <el-tabs v-model="tab.data" tab-position="left" @tab-click="handleTabClick">
       <template v-for="(item, index) in routes" :key="index + item.name">
         <el-tab-pane :name="item.name">
           <template #label>
@@ -32,6 +32,20 @@
         </el-tab-pane>
       </template>
     </el-tabs>
+
+    <el-menu
+      :default-active="activeMenu.data"
+      :default-openeds="defaultOpeneds"
+      mode="vertical"
+      :unique-opened="uniqueOpened"
+    >
+      <el-divider>
+        {{ translate(tabMenu ? tabMenu.meta.title : tabMenu) }}
+      </el-divider>
+      <template v-for="item in partialRoutes" :key="item.path">
+        <vab-menu v-if="!item.meta.hidden" :item="item" />
+      </template>
+    </el-menu>
   </el-scrollbar>
 </template>
 <script lang="ts">
@@ -40,8 +54,14 @@
   }
 </script>
 <script setup lang="ts">
+  import { isExternal } from '@/utils/validate'
   import { useRoutesStore } from '@/stores/modules/routes'
   import { useSettingsStore } from '@/stores/modules/settings'
+  import { translate } from '@/i18n'
+  import config from '@/config'
+  const { openFirstMenu, defaultOpeneds, uniqueOpened } = config
+  console.log(openFirstMenu)
+
   const route = useRoute()
   const router = useRouter()
   const settingsStore = useSettingsStore()
@@ -55,6 +75,18 @@
     getRoutes: routes,
     getPartialRoutes: partialRoutes,
   }: any = storeToRefs(routesStore)
+
+  const handleTabClick = () => {
+    nextTick(() => {
+      if (isExternal(tabMenu.value.path)) {
+        window.open(tabMenu.value.path)
+        setTimeout(() => {
+          router.push('/')
+        }, 1000)
+      } else if (openFirstMenu)
+        router.push(tabMenu.value.redirect || tabMenu.value)
+    })
+  }
 
   watchEffect(() => {
     const foldUnfold: any = document.querySelector(
